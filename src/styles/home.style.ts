@@ -28,8 +28,8 @@ export const Header = styled.div`
   }
 `
 export const Wrapper = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 20rem;
+  height: 20rem;
   background-color: ${({ theme }) => theme.bgColor};
   border-radius: 47px;
   box-shadow:
