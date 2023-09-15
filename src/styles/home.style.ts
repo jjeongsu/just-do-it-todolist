@@ -2,7 +2,7 @@ import styled from 'styled-components'
 export const Header = styled.div`
   width: 100vw;
   color: ${({ theme }) => theme.bgColor};
-  font-family: 'Lobster', cursive;
+  font-family: 'ADLaM Display', cursive;
   font-size: 45px;
   font-weight: 700;
   padding: 20px;
@@ -30,7 +30,7 @@ export const Header = styled.div`
 export const Wrapper = styled.div`
   width: 20rem;
   height: 20rem;
-  background-color: ${({ theme }) => theme.bgColor};
+  background-color: rgba(255, 255, 255, 0.63);
   border-radius: 47px;
   box-shadow:
     -15px 15px 33px #afafaf,
@@ -48,6 +48,7 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.darkgray};
+  background-color: none;
   &:focus {
     border-bottom: 3px solid ${({ theme }) => theme.accentColor};
   }

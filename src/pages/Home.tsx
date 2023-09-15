@@ -7,9 +7,16 @@ import { TodoList } from '../components/TodoList'
 
 function Home() {
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '80vh',
+      }}
+    >
       <TodoList />
-    </>
+    </div>
   )
 }
 export default Home
