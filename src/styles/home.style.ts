@@ -28,9 +28,9 @@ export const Header = styled.div`
   }
 `
 export const Wrapper = styled.div`
-  width: 20rem;
-  height: 20rem;
-  background-color: rgba(255, 255, 255, 0.63);
+  width: 30rem;
+  height: 30rem;
+  background-color: white;
   border-radius: 47px;
   box-shadow:
     -15px 15px 33px #afafaf,
@@ -39,6 +39,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  div {
+    font-size: 15px;
+    margin: 10px;
+  }
+
+  a {
+    color: ${({ theme }) => theme.accentColor};
+    font-weight: 600;
+  }
 `
 export const Input = styled.input`
   width: 250px;

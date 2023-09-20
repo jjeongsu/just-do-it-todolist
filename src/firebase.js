@@ -6,6 +6,8 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth'
 
+import { getFirestore } from 'firebase/firestore'
+
 const EapiKey = process.env.REACT_APP_FIREBASE_API_KEY
 const EauthDomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN
 const EprojectId = process.env.REACT_APP_FIREBASE_PROJECT_ID
@@ -37,3 +39,6 @@ export const signupEmail = (email, password) => {
 export const loginEmail = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
+
+//db
+export const db = getFirestore()

@@ -24,17 +24,17 @@ const reducer = (state: any, action: any) => {
     }
   }
 
-  if (action.type === 'CHANGE_STATE') {
-    console.log('action', action)
-    let i = 0
-    while (i < state.todos.length) {
-      if (action.id === state.todos[i].id) {
-        break
-      }
-    }
-    newState = { ...state } //여기 어려움
-    return newState
-  }
+  // if (action.type === 'CHANGE_STATE') {
+  //   console.log('action', action)
+  //   let i = 0
+  //   while (i < state.todos.length) {
+  //     if (action.id === state.todos[i].id) {
+  //       break
+  //     }
+  //   }
+  //   newState = { ...state ,} //여기 어려움
+  //   return newState
+  // }
 }
 const store = createStore(reducer)
 export type RootState = ReturnType<typeof store.getState>

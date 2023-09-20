@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { loginEmail, signupEmail } from '../firebase'
 import * as S from '../styles/home.style'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -73,8 +73,11 @@ function Login() {
       ) : null}
       <S.ButtonBox>
         <S.Button onClick={handleLoginClick}>로그인</S.Button>
-        <S.Button onClick={handleSignupClick}>회원가입</S.Button>
       </S.ButtonBox>
+      <div>
+        아직 회원이 아닌가요?
+        <Link to="/signup"> 회원가입하러 가기</Link>
+      </div>
     </S.Wrapper>
   )
 }
