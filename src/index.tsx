@@ -9,6 +9,7 @@ import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from './styles/theme'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { AuthProvider } from './config/AuthProvider'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 const reducer = (state: any, action: any) => {
   let newState = {}
@@ -23,18 +24,6 @@ const reducer = (state: any, action: any) => {
       todos: initial,
     }
   }
-
-  // if (action.type === 'CHANGE_STATE') {
-  //   console.log('action', action)
-  //   let i = 0
-  //   while (i < state.todos.length) {
-  //     if (action.id === state.todos[i].id) {
-  //       break
-  //     }
-  //   }
-  //   newState = { ...state ,} //여기 어려움
-  //   return newState
-  // }
 }
 const store = createStore(reducer)
 export type RootState = ReturnType<typeof store.getState>
@@ -44,7 +33,9 @@ root.render(
       <Provider store={store}>
         <GlobalStyle />
         <ThemeProvider theme={lightTheme}>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </ThemeProvider>
       </Provider>
     </React.StrictMode>

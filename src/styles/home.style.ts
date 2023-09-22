@@ -15,6 +15,12 @@ export const Header = styled.div`
     animation-name: rainbow;
     animation-iteration-count: infinite;
   }
+  span {
+    font-family: 'ADLaM Display', cursive;
+    font-size: 35px;
+    font-weight: 700;
+    margin-right: 20px;
+  }
   @keyframes rainbow {
     0% {
       color: ${({ theme }) => theme.bgColor};
@@ -64,7 +70,7 @@ export const Input = styled.input`
   }
 `
 export const Button = styled.button`
-  width: 120px;
+  width: 250px;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;

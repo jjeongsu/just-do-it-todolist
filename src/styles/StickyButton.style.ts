@@ -30,4 +30,9 @@ export const StickyButtonHidden = styled.button<{ isOpen: boolean }>`
   transition-property: opacity;
   transition-duration: 0.5s;
   transition-timing-function: ease;
+  button {
+    border: none;
+    font-size: 10px;
+    background-color: transparent;
+  }
 `

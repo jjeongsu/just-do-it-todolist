@@ -4,6 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
 } from 'firebase/auth'
 
 import { getFirestore } from 'firebase/firestore'
@@ -29,16 +31,19 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
-const auth = getAuth()
+export const auth = getAuth()
 
+//Email 회원가입
 export const signupEmail = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
 }
 
-//Email 회원가입
+//Email 로그인
 export const loginEmail = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
 
 //db
 export const db = getFirestore()
+
+initializeApp(firebaseConfig)

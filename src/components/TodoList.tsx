@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '..'
 import { useDispatch } from 'react-redux'
 
-import { db } from '../firebase'
+import { db } from '../config/firebase'
 import { collection, getDocs } from 'firebase/firestore'
 
 export function TodoList() {
@@ -16,15 +16,6 @@ export function TodoList() {
   const [isInputOpen, setIsInputOpen] = useState<boolean>(false)
   const todos = useSelector((state: RootState) => state!.todos)
 
-  async function getDB() {
-    // 'posts' 컬렉션의 모든 문서들을 가져옴
-    const querySnapshot = await getDocs(collection(db, 'accounts'))
-    querySnapshot.forEach(doc => {
-      // 가져온 모든 문서들을 확인
-      console.log(doc.id, ' => ', doc.data())
-    })
-  }
-  getDB()
   return (
     <>
       <S.Wrapper>
@@ -65,7 +56,7 @@ const TodoElem = (props: any) => {
   const task_state = props.task_state
   const task_name = props.task_name
   const id = props.id
-  console.log('task_state', task_state, typeof task_state)
+
   const handleClick = (e: any) => {
     const { id } = e.currentTarget
     console.log('e.target.value', e.currentTarget)
