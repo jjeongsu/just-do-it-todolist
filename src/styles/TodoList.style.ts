@@ -72,3 +72,33 @@ export const AddButton = styled.button<ICreateTodo>`
   color: ${({ theme }) => theme.accentColor};
   font-weight: 600;
 `
+
+export const Item = styled.div`
+  font-family: 'Montserrat', sans-serif;
+  color: ${({ theme }) => theme.accentColor};
+  font-weight: 600;
+  font-size: 18px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 30px;
+  width: inherit;
+  height: 50px;
+  align-items: center;
+  span {
+    display: inline-block;
+  }
+  div {
+    margin-left: 10px;
+  }
+  button {
+    border: none;
+    background: transparent;
+    color: ${({ theme }) => theme.accentColor};
+    font-weight: 300;
+    margin: 0px 10px;
+  }
+  input {
+    border: none;
+  }
+`

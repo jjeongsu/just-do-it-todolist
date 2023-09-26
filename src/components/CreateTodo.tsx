@@ -1,24 +1,27 @@
 import React, { SetStateAction, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { styled } from 'styled-components'
 export interface ICreateTodo {
   isOpen: boolean
+  onCreate?: any
 }
-export default function CreateTodo({ isOpen }: ICreateTodo) {
-  const [todo, setTodo] = useState<string>('')
-  const handleSubmit = (e: any) => {
+export default function CreateTodo({ isOpen, onCreate }: ICreateTodo) {
+  const [text, setText] = useState('')
+  const onChange = (e: any) => {
+    setText(e.target.value)
+  }
+  const onSubmit = (e: any) => {
     e.preventDefault()
-    console.log('form을 통해 전달될 event', todo)
-    //어떤 일을 수행하고
-
-    setTodo('')
+    onCreate(text)
+    setText('')
   }
   return (
     <Wrapper isOpen={isOpen}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <TodoInput
           type="text"
-          onChange={(e: any) => setTodo(e.target.value)}
-          value={todo}
+          onChange={onChange}
+          value={text}
           placeholder="오늘 할일을 작성하세요"
         />
         <button type="submit">ADD</button>
