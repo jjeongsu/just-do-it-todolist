@@ -1,4 +1,4 @@
-# Tave WEB 스터디 프로젝트
+# Redux 스터디 프로젝트
 
 ## Todo List 만들기
 
@@ -10,7 +10,7 @@ TypeScript + React.js + styled-component
 
 상태관리 라이브러리 : Redux `npm install react-redux`
 날짜 관련 라이브러리 : Moment `npm install moment --save `
-
+WEB Speeach API : React Speech Kit `npm i react-speech-kit` (디펜던시 이슈 출력시 `npm i --force react-speech-kit`)
 기타 :carrot:
 
 - React Icons `npm install react-icons --save`

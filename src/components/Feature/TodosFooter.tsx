@@ -1,9 +1,9 @@
-import * as S from '../styles/TodoList.style'
+import * as S from '../../styles/TodoList.style'
 import { useSelector } from 'react-redux'
-import { RootState } from '..'
+import { RootState } from '../..'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { addTodo } from '../modules/todos'
+import { addTodo } from '../../modules/todos'
 import CreateTodo from './CreateTodo'
 export function TodosFooter() {
   const [isInputOpen, setIsInputOpen] = useState<boolean>(false)

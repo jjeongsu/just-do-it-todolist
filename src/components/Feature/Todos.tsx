@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import * as S from '../styles/TodoList.style'
+import * as S from '../../styles/TodoList.style'
 //컴포넌트 최적화를 위해 REACT.memeo를 사용
 const TodoItem = React.memo(function TodoItem({
   todo,
@@ -22,6 +22,7 @@ const TodoItem = React.memo(function TodoItem({
   const handleUpdateClick = () => {
     setIsUpdate(true)
   }
+  console.log('TodoItem 랜더링~~~')
   return (
     <S.Item>
       {isUpdate ? (

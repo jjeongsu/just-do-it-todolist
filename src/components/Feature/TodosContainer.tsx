@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Todos from '../components/Todos'
+import Todos from './Todos'
 import {
   addTodo,
   toggleTodo,
   deleteTodo,
   updateTodo,
   ITodo,
-} from '../modules/todos'
+} from '../../modules/todos'
 
 function TodosContainer() {
   const todos = useSelector((state: any) => state.todos)
@@ -24,7 +24,7 @@ function TodosContainer() {
     (id: number, text: string) => dispatch(updateTodo(id, text)),
     [dispatch]
   )
-  console.log('todos', todos)
+
   return (
     <Todos
       todos={todos}

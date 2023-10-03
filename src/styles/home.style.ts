@@ -55,6 +55,11 @@ export const Wrapper = styled.div`
     color: ${({ theme }) => theme.accentColor};
     font-weight: 600;
   }
+
+  p {
+    color: red;
+    font-size: 10px;
+  }
 `
 export const Input = styled.input`
   width: 250px;

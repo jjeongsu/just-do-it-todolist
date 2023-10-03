@@ -5,9 +5,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from 'firebase/auth'
-import { auth } from '../config/firebase'
+import { auth } from '../../config/firebase'
 import { useContext } from 'react'
-import { UserContext } from '../config/AuthProvider'
+import { UserContext } from '../../config/AuthProvider'
 import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
 import firebase from 'firebase/app'

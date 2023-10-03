@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { ICreateTodo } from '../components/CreateTodo'
+import { ICreateTodo } from '../components/Feature/CreateTodo'
 
 export const Wrapper = styled.div`
   width: 30rem;

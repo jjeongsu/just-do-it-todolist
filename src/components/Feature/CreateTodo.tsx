@@ -1,14 +1,23 @@
 import React, { SetStateAction, useState } from 'react'
-import { useDispatch } from 'react-redux'
+
 import { styled } from 'styled-components'
+// import { useSpeechRecognition } from 'react-speech-kit'
 export interface ICreateTodo {
   isOpen: boolean
   onCreate?: any
 }
 export default function CreateTodo({ isOpen, onCreate }: ICreateTodo) {
   const [text, setText] = useState('')
+  const [isDisable, setIsDisable] = useState(true) //할일 추가 버튼 활성화여부 체크
   const onChange = (e: any) => {
-    setText(e.target.value)
+    const value = e.target.value
+    setText(value)
+    if (value.length > 0) {
+      setIsDisable(false)
+    } else {
+      setIsDisable(true)
+    }
+    console.log('isDisable', isDisable)
   }
   const onSubmit = (e: any) => {
     e.preventDefault()
@@ -24,7 +33,9 @@ export default function CreateTodo({ isOpen, onCreate }: ICreateTodo) {
           value={text}
           placeholder="오늘 할일을 작성하세요"
         />
-        <button type="submit">ADD</button>
+        <button type="submit" disabled={isDisable}>
+          ADD
+        </button>
       </form>
     </Wrapper>
   )

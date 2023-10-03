@@ -1,14 +1,15 @@
 import { styled } from 'styled-components'
-import * as S from '../styles/home.style'
+import * as S from '../../styles/home.style'
 import { useContext, useState } from 'react'
-import { db, signupEmail } from '../config/firebase'
-import { UserContext } from '../config/AuthProvider'
+import { db, signupEmail } from '../../config/firebase'
+import { UserContext } from '../../config/AuthProvider'
 import { doc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 export default function Signup() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [username, setUsername] = useState<string>('')
+  const [errMessage, setErrMessage] = useState<string>('')
   const navigate = useNavigate()
   const handleSignupClick = () => {
     signupEmail(email, password)
@@ -27,6 +28,8 @@ export default function Signup() {
       })
       .catch(err => console.log(err))
   }
+  console.log('회원가입 페이지 리랜더링~~', errMessage)
+  setErrMessage('hell')
   return (
     <Outline>
       <S.Wrapper>

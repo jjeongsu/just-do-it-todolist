@@ -1,5 +1,5 @@
 import moment from 'moment'
-import * as S from '../styles/TodoList.style'
+import * as S from '../../styles/TodoList.style'
 
 export function TodosHeader() {
   const dayOfWeek = moment().format('dddd')
