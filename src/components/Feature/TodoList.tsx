@@ -7,7 +7,6 @@ export function TodoList() {
   return (
     <>
       <S.Wrapper>
-        <SpeechRecog />
         <TodosHeader />
         <TodosContainer />
         <TodosFooter />
