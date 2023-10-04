@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { addTodo } from '../../modules/todos'
 import CreateTodo from './CreateTodo'
 import SpeechRecog from '../SpeechRecog'
+import SpeechGuide from '../SpeechGuide'
 export function TodosFooter() {
   const [isInputOpen, setIsInputOpen] = useState<boolean>(false)
   const todos = useSelector((state: RootState) => state!.todos)
@@ -13,6 +14,7 @@ export function TodosFooter() {
   const onCreate = (text: string) => dispatch(addTodo(text))
   return (
     <>
+      {isInputOpen ? <SpeechGuide /> : null}
       {isInputOpen ? <SpeechRecog /> : null}
       <S.TodoListFooter>
         {todos.length} tasks

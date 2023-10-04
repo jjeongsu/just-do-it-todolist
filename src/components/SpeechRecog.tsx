@@ -10,10 +10,7 @@ export default function SpeechRecog() {
   const dispatch = useDispatch()
   const onCreate = (text: string) => dispatch(addTodo(text))
   function splitCommand(message: string) {
-    const command_arr = message
-      .replaceAll('그리고', '/')
-      .split('/')
-      .map(t => t.trim())
+    const command_arr = message.split('그리고').map(t => t.trim())
     console.log('그리고 단위로 잘린 문자열', command_arr)
 
     //배열 돌면서 만들어진 할일들을 추가하기
@@ -22,7 +19,7 @@ export default function SpeechRecog() {
 
   const commands = [
     {
-      command: '* 추가하기',
+      command: '* 추가',
       callback: (rawcontents: string) => {
         setMessage(`추가할 rawcontents: ${rawcontents}`)
         splitCommand(rawcontents)
@@ -50,14 +47,9 @@ export default function SpeechRecog() {
   const startListening = () =>
     SpeechRecognition.startListening({ continuous: true, language: 'ko' })
 
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>
-  }
   return (
     <>
       <S.Wrapper isListening={listening}>
-        {/* <p>Microphone: {listening ? 'on' : 'off'}</p> */}
-
         <S.Mic
           isListening={listening}
           onTouchStart={startListening}
@@ -67,7 +59,12 @@ export default function SpeechRecog() {
         >
           <BsFillMicFill className="mic-icon" />
         </S.Mic>
-        <p>{transcript}</p>
+
+        {browserSupportsSpeechRecognition ? (
+          <p>{transcript}</p>
+        ) : (
+          <p>Browser doesn't support speech recognition.</p>
+        )}
       </S.Wrapper>
     </>
   )
