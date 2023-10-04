@@ -63,6 +63,11 @@ export const Button = styled.button`
   align-items: center;
   cursor: pointer;
   color: ${({ theme }) => theme.accentColor};
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
 `
 export const AddButton = styled.button<ICreateTodo>`
   display: ${({ isOpen }) => (isOpen ? 'none' : 'block')};
@@ -100,5 +105,18 @@ export const Item = styled.div`
   }
   input {
     border: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+  .todo-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .check-icon {
+    margin-right: 20px;
   }
 `
