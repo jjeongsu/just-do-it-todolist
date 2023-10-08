@@ -1,14 +1,14 @@
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
-import Header from './components/Header'
-import Aurora from './components/Aurora'
+import Header from './components/DefaultUI/Header'
+import Aurora from './components/DefaultUI/Aurora'
 import { LogIn } from './pages/Login'
 import {
   StickyButton,
   StickyButtonBase,
   StickyButtonHidden,
-} from './components/Sticky'
-import Signup from './components/User/Signup'
+} from './components/DefaultUI/Sticky'
+import Signup from './components/Auth/Signup'
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthProvider, UserContext } from './config/AuthProvider'
 import { auth } from './config/firebase'

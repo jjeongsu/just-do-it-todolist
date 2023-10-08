@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import * as S from '../styles/StickyButton.style'
+import * as S from '../../styles/StickyButton.style'
 export interface IButtonState {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>

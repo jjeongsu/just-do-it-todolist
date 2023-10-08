@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import Login from '../components/User/Login'
+import Login from '../components/Auth/Login'
 
 export function LogIn() {
   return (

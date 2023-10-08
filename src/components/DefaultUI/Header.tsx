@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import * as S from '../styles/home.style'
+import * as S from '../../styles/home.style'
 import { useContext, useEffect } from 'react'
-import { IUser, UserContext } from '../config/AuthProvider'
+import { IUser, UserContext } from '../../config/AuthProvider'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth, db } from '../config/firebase'
+import { auth, db } from '../../config/firebase'
 import {
   DocumentData,
   DocumentReference,

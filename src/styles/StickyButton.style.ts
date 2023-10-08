@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { IButtonState } from '../components/Sticky'
+import { IButtonState } from '../components/DefaultUI/Sticky'
 
 export const StickyButton = styled.button`
   width: 5rem;

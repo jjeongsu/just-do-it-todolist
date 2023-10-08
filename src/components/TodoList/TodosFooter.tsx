@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { addTodo } from '../../modules/todos'
 import CreateTodo from './CreateTodo'
-import SpeechRecog from '../SpeechRecog'
-import SpeechGuide from '../SpeechGuide'
+import SpeechRecog from '../Speech/SpeechRecog'
+import SpeechGuide from '../Speech/SpeechGuide'
 export function TodosFooter() {
   const [isInputOpen, setIsInputOpen] = useState<boolean>(false)
   const todos = useSelector((state: RootState) => state!.todos)

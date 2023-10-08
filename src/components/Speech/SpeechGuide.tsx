@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as S from '../styles/speech-guide.style'
+import * as S from '../../styles/speech-guide.style'
 import { AiOutlineClose } from 'react-icons/ai'
 export default function SpeechGuide() {
   const [isOpen, setIsOpen] = useState(true)
@@ -12,9 +12,7 @@ export default function SpeechGuide() {
         </h1>
         <h2> 마이크 버튼을 누르고 다음과 같이 말해 보세요</h2>
         <p>
-          "
-          <span className="highlight">운동가기 그리고 스터디공부하기 추가</span>
-          "
+          "<span className="highlight">운동가기 그리고 공부하기 추가</span>"
         </p>
         <S.Button
           onClick={() => {

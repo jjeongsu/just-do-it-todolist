@@ -8,8 +8,10 @@ import {
   updateTodo,
   ITodo,
 } from '../../modules/todos'
+import { IDateProps } from './TodoList'
+import dayjs from 'dayjs'
 
-function TodosContainer() {
+function TodosContainer({ currentDate }: IDateProps) {
   const todos = useSelector((state: any) => state.todos)
   const dispatch = useDispatch()
   const onToggle = useCallback(
