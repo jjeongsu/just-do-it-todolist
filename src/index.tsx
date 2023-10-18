@@ -12,6 +12,7 @@ import { createStore } from 'redux'
 import rootReducer from './modules'
 import { AuthProvider } from './config/AuthProvider'
 import { composeWithDevTools } from 'redux-devtools-extension' // 리덕스 개발자 도구
+import { strictEqual } from 'assert'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 

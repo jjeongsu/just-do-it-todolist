@@ -14,6 +14,10 @@ import { AuthProvider, UserContext } from './config/AuthProvider'
 import { auth } from './config/firebase'
 import { signOut } from 'firebase/auth'
 
+import { Mypage } from './components/Mypage/Mypage'
+import PublicRoute from './pages/PublicRoute'
+import PrivateRoute from './pages/Privateroute'
+
 function App() {
   const { isLogin, setIsLogin, setUser } = useContext(UserContext)
   const navigate = useNavigate()
@@ -57,8 +61,13 @@ function App() {
       </StickyButton>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/mypage" element={<Mypage />} />
+        </Route>
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
       </Routes>
     </>
   )

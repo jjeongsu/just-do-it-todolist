@@ -1,14 +1,22 @@
-import React, { SetStateAction, useState } from 'react'
+import React, { SetStateAction, useContext, useState } from 'react'
 
 import { styled } from 'styled-components'
+import { addFirebaseTodo } from '../../config/firebase.todos'
+import { UserContext } from '../../config/AuthProvider'
 // import { useSpeechRecognition } from 'react-speech-kit'
 export interface ICreateTodo {
   isOpen: boolean
   onCreate?: any
+  currentDateStr?: string
 }
-export default function CreateTodo({ isOpen, onCreate }: ICreateTodo) {
+export default function CreateTodo({
+  isOpen,
+  onCreate,
+  currentDateStr,
+}: ICreateTodo) {
   const [text, setText] = useState('')
   const [isDisable, setIsDisable] = useState(true) //할일 추가 버튼 활성화여부 체크
+  const { user, isLogin } = useContext(UserContext)
   const onChange = (e: any) => {
     const value = e.target.value
     setText(value)
@@ -21,7 +29,7 @@ export default function CreateTodo({ isOpen, onCreate }: ICreateTodo) {
   }
   const onSubmit = (e: any) => {
     e.preventDefault()
-    onCreate(text)
+    onCreate(text, currentDateStr, user.userIdx)
     setText('')
   }
   return (

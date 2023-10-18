@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { loginEmail, signupEmail, auth } from '../../config/firebase'
+import { useCallback, useContext, useState } from 'react'
+import { loginEmail, signupEmail, auth, db } from '../../config/firebase'
 import * as S from '../../styles/home.style'
 import { Link, useNavigate } from 'react-router-dom'
-import {
-  GoogleAuthProvider,
-  browserLocalPersistence,
-  setPersistence,
-} from 'firebase/auth'
+import { browserLocalPersistence, setPersistence } from 'firebase/auth'
 import { GoogleLogin } from './GoogleLogin'
 import { useForm } from 'react-hook-form'
+
+import { getUserInfo } from '../../config/firebase.user'
+import { IUserInfo, addUserInfo } from '../../modules/user'
+import { useDispatch } from 'react-redux'
 
 interface IFormData {
   errors: {
@@ -30,14 +30,29 @@ function Login() {
     formState: { errors },
   } = useForm<IFormData>()
   let navigate = useNavigate()
-
+  const dispatch = useDispatch()
+  const onAddUser = useCallback(
+    (user: IUserInfo) => dispatch(addUserInfo(user)),
+    [dispatch]
+  )
   const handleLoginClick = (email: string, password: string) => {
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
         return loginEmail(email, password)
       })
-      .then(result => {
-        //console.log(result)
+      .then(async result => {
+        console.log('로그인후 result', result)
+        //DB에서 사용자 정보 가져와서 context에 담기
+        const userData = await getUserInfo(email)
+        const newUserInfo = {
+          user: {
+            userEmail: userData.userEmail,
+            userIdx: userData.userIdx,
+            userName: userData.userName,
+          },
+          isLogin: true,
+        }
+        onAddUser(newUserInfo)
         navigate('/')
       })
       .catch(err => {

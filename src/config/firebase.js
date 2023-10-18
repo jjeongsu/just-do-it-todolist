@@ -44,6 +44,6 @@ export const loginEmail = (email, password) => {
 }
 
 //db
-export const db = getFirestore()
+export const db = getFirestore(app)
 
 initializeApp(firebaseConfig)

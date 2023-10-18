@@ -8,12 +8,12 @@ import { BsFillMicFill } from 'react-icons/bs'
 import * as S from '../../styles/speech.style'
 export default function SpeechRecog() {
   const dispatch = useDispatch()
-  const onCreate = (text: string) => dispatch(addTodo(text))
+  //const onCreate = (text: string) => dispatch(addTodo(text))
   function splitCommand(message: string) {
     const command_arr = message.split('그리고').map(t => t.trim())
     console.log('그리고 단위로 잘린 문자열', command_arr)
     //배열 돌면서 만들어진 할일들을 추가하기
-    command_arr.forEach(v => onCreate(v))
+    //command_arr.forEach(v => onCreate(v))
   }
 
   const commands = [
