@@ -3,6 +3,7 @@ import React, { SetStateAction, useContext, useState } from 'react'
 import { styled } from 'styled-components'
 import { addFirebaseTodo } from '../../config/firebase.todos'
 import { UserContext } from '../../config/AuthProvider'
+import { useSelector } from 'react-redux'
 // import { useSpeechRecognition } from 'react-speech-kit'
 export interface ICreateTodo {
   isOpen: boolean
@@ -16,7 +17,7 @@ export default function CreateTodo({
 }: ICreateTodo) {
   const [text, setText] = useState('')
   const [isDisable, setIsDisable] = useState(true) //할일 추가 버튼 활성화여부 체크
-  const { user, isLogin } = useContext(UserContext)
+  const user = useSelector((state: any) => state.user)
   const onChange = (e: any) => {
     const value = e.target.value
     setText(value)

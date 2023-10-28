@@ -47,11 +47,15 @@ export const updateTodo = (id: number, text: string) => ({
 
 export const initTodo = async (userIdx: string, date: string) => {
   const todos = await readFirebaseTodo(userIdx, date)
-  console.log(todos)
-  return {
-    type: INIT_TODO,
-    init_todo: [...todos],
-  }
+  return todos
+    ? {
+        type: INIT_TODO,
+        init_todo: [...todos],
+      }
+    : {
+        type: INIT_TODO,
+        init_todo: [],
+      }
 }
 export interface ITodo {
   id: number

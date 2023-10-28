@@ -5,9 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { browserLocalPersistence, setPersistence } from 'firebase/auth'
 import { GoogleLogin } from './GoogleLogin'
 import { useForm } from 'react-hook-form'
-
-import { getUserInfo } from '../../config/firebase.user'
-import { IUserInfo, addUserInfo } from '../../modules/user'
+import { addUserInfo } from '../../modules/user'
 import { useDispatch } from 'react-redux'
 
 interface IFormData {
@@ -32,7 +30,7 @@ function Login() {
   let navigate = useNavigate()
   const dispatch = useDispatch()
   const onAddUser = useCallback(
-    (user: IUserInfo) => dispatch(addUserInfo(user)),
+    async (userIdx: string) => dispatch(await addUserInfo(userIdx)),
     [dispatch]
   )
   const handleLoginClick = (email: string, password: string) => {
@@ -41,18 +39,7 @@ function Login() {
         return loginEmail(email, password)
       })
       .then(async result => {
-        console.log('로그인후 result', result)
-        //DB에서 사용자 정보 가져와서 context에 담기
-        const userData = await getUserInfo(email)
-        const newUserInfo = {
-          user: {
-            userEmail: userData.userEmail,
-            userIdx: userData.userIdx,
-            userName: userData.userName,
-          },
-          isLogin: true,
-        }
-        onAddUser(newUserInfo)
+        onAddUser(result.user.uid)
         navigate('/')
       })
       .catch(err => {

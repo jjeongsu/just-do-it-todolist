@@ -15,7 +15,7 @@ import { UserContext } from '../../config/AuthProvider'
 import { readFirebaseTodo } from '../../config/firebase.todos'
 
 function TodosContainer({ currentDateStr }: { currentDateStr: string }) {
-  const user = useSelector((state: any) => state.user.user)
+  const user = useSelector((state: any) => state.user)
   const userIdx = user.userIdx
   const todos = useSelector((state: any) => state.todos)
   const dispatch = useDispatch()
@@ -39,7 +39,7 @@ function TodosContainer({ currentDateStr }: { currentDateStr: string }) {
   )
   useEffect(() => {
     if (userIdx) {
-      console.log('userIDx 존제재')
+      console.log('userIDx 존제재', userIdx)
       onInit(userIdx, currentDateStr)
     }
   }, [userIdx, currentDateStr])

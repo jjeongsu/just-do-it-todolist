@@ -3,15 +3,18 @@
  * 유저정보 저장하기 : ADD_USER_INFO
  */
 
+import { getUserData } from '../config/firebase.user'
+
 //액션타입을 선언한다
 const ADD_USER_INFO = 'user/ADD_USER_INFO'
 const DELETE_USER_INFO = 'user/DELETE_USER_INFO'
 
 //액션 생성함수를 선언한다.
-export const addUserInfo = (user: IUserInfo) => {
+export const addUserInfo = async (userIdx: string) => {
+  const userData = await getUserData(userIdx)
   return {
     type: ADD_USER_INFO,
-    user: user,
+    user: userData,
   }
 }
 
@@ -21,25 +24,22 @@ export const deleteUserInfo = () => {
   }
 }
 
-export interface IUser {
-  userName?: string | null
-  userEmail?: string | null
-  userIdx?: string | null
+interface IUserInfo {
+  userIdx: string
+  userEmail: string
+  userPassword: string
+  userName: string
 }
-
-export interface IUserInfo {
-  user: IUser
-  isLogin: boolean
-}
-
 const initialState: IUserInfo = {
-  user: { userName: '', userEmail: '', userIdx: '' },
-  isLogin: false,
+  userIdx: '',
+  userEmail: '',
+  userPassword: '',
+  userName: '',
 }
 
 export default function user(
   state = initialState,
-  action: { type: any; user: IUser }
+  action: { type: any; user: IUserInfo }
 ) {
   switch (action.type) {
     case ADD_USER_INFO:

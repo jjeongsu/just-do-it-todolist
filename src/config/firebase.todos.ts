@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore'
 import { db } from './firebase'
 import { useSelector } from 'react-redux'
+import { ITodo } from '../modules/todos'
 //Create
 const todoCollections = collection(db, 'todos')
 
@@ -18,10 +19,16 @@ export const readFirebaseTodo = async (userIdx: string, date: string) => {
   const todosOfDayRef = collection(db, 'todos', userIdx, `${date}`)
   const q = query(todosOfDayRef)
 
-  const rawdata = await (await getDocs(q)).docs
-  let todos: any[] = []
-  rawdata.forEach(e => todos.push(e.data()))
-  return todos
+  try {
+    const rawdata = await (await getDocs(q)).docs
+    if (rawdata) {
+      let todos: DocumentData[] = []
+      rawdata.forEach(e => todos.push(e.data()))
+      return todos
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export const addFirebaseTodo = async (

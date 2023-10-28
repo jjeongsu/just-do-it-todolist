@@ -5,6 +5,7 @@ import { db, signupEmail } from '../../config/firebase'
 import { UserContext } from '../../config/AuthProvider'
 import { doc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
+import { setUserData } from '../../config/firebase.user'
 export default function Signup() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -20,16 +21,16 @@ export default function Signup() {
           userName: username,
           userEmail: email,
           userIdx: user.uid,
+          userPassword: password,
         }
-        await setDoc(doc(db, 'accounts', user.uid), userData)
+        setUserData(userData)
       })
       .then(() => {
-        navigate('/')
+        navigate('/login')
       })
       .catch(err => console.log(err))
   }
-  console.log('회원가입 페이지 리랜더링~~', errMessage)
-  setErrMessage('hell')
+
   return (
     <Outline>
       <S.Wrapper>

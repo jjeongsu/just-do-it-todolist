@@ -3,16 +3,16 @@ import * as S from '../../styles/home.style'
 import { useContext, useEffect } from 'react'
 import { IUser, UserContext } from '../../config/AuthProvider'
 import { useSelector } from 'react-redux'
+import { getUserData } from '../../config/firebase.user'
 
 function Header() {
-  // const { user, setUser, isLogin } = useContext(UserContext)
   const user = useSelector((state: any) => state.user)
-  console.log('user 정보', user)
+  console.log('리덕스의 user', user)
   return (
     <>
       <Link to="/">
         <S.Header>
-          {user ? <span>{user.user.userName} </span> : null}
+          {user ? <span>{user.userName} </span> : null}
           Just do it!
         </S.Header>
       </Link>

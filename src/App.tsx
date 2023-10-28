@@ -17,16 +17,19 @@ import { signOut } from 'firebase/auth'
 import { Mypage } from './components/Mypage/Mypage'
 import PublicRoute from './pages/PublicRoute'
 import PrivateRoute from './pages/Privateroute'
+import { useDispatch } from 'react-redux'
+import { deleteUserInfo } from './modules/user'
+import { useSelector } from 'react-redux'
 
 function App() {
-  const { isLogin, setIsLogin, setUser } = useContext(UserContext)
+  const user = useSelector((state: any) => state.user)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const handleLogOut = () => {
     signOut(auth)
       .then(res => {
         console.log('로그아웃 성공')
-        setIsLogin(false)
-        setUser({})
+        dispatch(deleteUserInfo())
         navigate('/')
       })
       .catch(err => console.log('로그아웃 실패', err))
@@ -35,10 +38,8 @@ function App() {
     auth.onAuthStateChanged(user => {
       //console.log(user)
       if (user) {
-        setIsLogin(true)
         console.log('로그인된 상태입니다.')
       } else {
-        setIsLogin(false)
         console.log('로그아웃된 상태 입니다.')
       }
     })
@@ -49,7 +50,7 @@ function App() {
       <Aurora />
       <StickyButton>
         <StickyButtonBase>open</StickyButtonBase>
-        {isLogin === false ? (
+        {user.userIdx === '' ? (
           <StickyButtonHidden>
             <Link to={'/login'}> Login</Link>
           </StickyButtonHidden>
